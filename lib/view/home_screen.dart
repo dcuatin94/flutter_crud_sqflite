@@ -167,7 +167,7 @@ class MyHomePageState extends State<MyHomePage> {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         title: Text(
-                          'Modelo',
+                          'Model',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         trailing: SizedBox(
@@ -228,7 +228,17 @@ class MyHomePageState extends State<MyHomePage> {
           style: const TextStyle(
               color: darkBlueColor, fontWeight: FontWeight.bold),
         ),
-        subtitle: Text(_journals[index].procesador.toString()),
+        subtitle: Row(
+          children: [
+            Text(_journals[index].procesador.toString()),
+            const VerticalDivider(
+              width: 20, // Espacio total ocupado por el separador
+              thickness: 2, // Grosor de la línea
+              color: Colors.grey, // Color de la línea
+            ),
+            Text(_journals[index].discoDuro.toString()),
+          ],
+        ),
         trailing: SizedBox(
           width: 100,
           child: Row(
@@ -243,6 +253,7 @@ class MyHomePageState extends State<MyHomePage> {
                     _discoDuroController.text =
                         _journals[index].discoDuro.toString();
                     id = int.parse(_journals[index].id.toString());
+                    _ramController.text = _journals[index].ram.toString();
                   }),
               IconButton(
                 icon: const Icon(Icons.delete),
